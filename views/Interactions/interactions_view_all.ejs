@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Drug Interactions - View All</title>
+</head>
+    <body>
+        <h1>Interactions</h1>
+        <a href="http://localhost:3000/interactions/add">
+            Add A New Interaction</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+        <br/>
+        <br/>
+        <br/>
+
+        <table border = "1">
+            <tr>
+                <th>Medication Name</th>
+                <th>Interacts With</th>
+                <th>Notes</th>
+            </tr>
+            <% for(var i = 0; i < interaction_result.length; i++) {%>
+                <tr>
+                    <td><%= interaction_result[i].m1_name %></td>
+                    <td><%= interaction_result[i].m2_name %></td>
+                    <td><%= interaction_result[i].notes %></td>
+                </tr>
+            <% } %>
+        </table>
+
+        <br/>
+        <br/>
+        <br/>
+        <a href="http://localhost:3000/interactions/add">
+            Add A New Interaction</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medication Side Effects - View All</title>
+</head>
+    <body>
+        <h1>Medication Side Effects</h1>
+        <br/>
+        <a href="http://localhost:3000/medication_side_effects/add">
+            Add Side Effect To Medication</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+
+        <br/>
+        <br/>
+
+        <table border = "1">
+            <tr>
+                <th>Medication Name</th>
+                <th>Symptom</th>
+                <th>Notes</th>
+            </tr>
+            <% for(var i = 0; med_side_effects_result.length > i; i++) {%>
+            <tr>
+                <td><%= med_side_effects_result[i].medication_name %></td>
+                <td><%= med_side_effects_result[i].symptom %></td>
+                <td><%= med_side_effects_result[i].notes %></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+        <a href="http://localhost:3000/medication_side_effects/add">
+            Add Side Effect To Medication</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </body>
+</html>

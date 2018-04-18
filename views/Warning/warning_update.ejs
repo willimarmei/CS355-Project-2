@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Warning - View All</title>
+</head>
+    <body>
+        <h1>Warnings</h1>
+        <br>
+        <form action = "/warning.update" method="get">
+            Medication: <input
+                    id="medication_id"
+                    name="medication_id"
+                    type="text"
+                    value="<%=warning.medication_id%>"/>
+            Warning: <input
+                    id="warning"
+                    name="warning"
+                    type="text"
+                    value="<%=warning.warning%>"/>
+            <input type = "hidden"
+                   id="medication_id"
+                   name="medication_id"
+                   value="<%=warning_result.medication_id%>"/>
+            <br>
+            <br>
+            <input type = "submit"/>
+        </form>
+        <br/>
+        <a href="/warning/all">Return to all</a>
+    </body>
+</html>

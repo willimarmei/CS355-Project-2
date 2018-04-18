@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Interaction - Add</title>
+    </head>
+    <body>
+        <h1>Add New Interaction</h1>
+        <form action = "/interactions/insert" method = "get">
+            First Medication Name:
+            <select name = "medication1_id">
+                <% for(var i = 0; medication.length > i; i++) {%>
+                <option value = "<%= medication[i].medication_id %>"> <%= medication[i].medication_name %></option>
+                <% } %>
+            </select>
+            <br/>
+            Second Medication Name:
+            <select name = "medication2_id">
+                <% for(var i = 0; medication.length > i; i++) {%>
+                <option value = "<%= medication[i].medication_id %>"> <%= medication[i].medication_name %></option>
+                <% } %>
+            </select>
+            <br/>
+
+            Notes: <input name="notes" type="text" />
+            <br />
+            <input type="submit"/>
+        </form>
+    </body>
+</html>

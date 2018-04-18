@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Generic Name - View All</title>
+</head>
+    <body>
+        <h1>Medication Generic Names</h1>
+
+        <a href="http://localhost:3000/generic_name/add">
+            Add New Generic Name</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+
+        <br/>
+        <br/>
+
+        <table border = "1">
+            <tr>
+                <th>Medication Name</th>
+                <th>Generic Name</th>
+            </tr>
+            <% for(var i = 0; i < generic_name.length; i++) {%>
+                <tr>
+                    <td><%= generic_name[i].medication_name %></td>
+                    <td><%= generic_name[i].generic_name %></td>
+                </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+        <a href="http://localhost:3000/generic_name/add">
+            Add New Generic Name</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+
+        <br/>
+        <br/>
+    </body>
+</html>

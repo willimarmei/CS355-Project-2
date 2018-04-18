@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medication - Edit</title>
+</head>
+    <body>
+        <h1>Edit Medications</h1>
+        <br>
+        <form action = "/medication/update" method="get">
+            Medication Name: <input
+                id="medication_name"
+                name="medication_name"
+                type="text"
+                value="<%= medication.medication_name%>"/>
+            Purpose: <input
+                    id="purpose"
+                    name="purpose"
+                    type="text"
+                    value="<%= medication.purpose%>"/>
+            How to take: <input
+                    id="how_to_take"
+                    name="how_to_take"
+                    type="text"
+                    value="<%= medication.how_to_take%>"/>
+            Warning: <input
+                    id="warning"
+                    name="warning"
+                    type="text"
+                    value="<%= medication.warning%>"/>
+            <input type = "hidden"
+                   id=medication_id"
+                   name="medication_id"
+                   value="<%= medication.medication_id%>" />
+        <br>
+            <input type ="submit"/>
+        </form>
+        <br/>
+        <a href="/medication/all">Return to all</a>
+    </body>
+</html>

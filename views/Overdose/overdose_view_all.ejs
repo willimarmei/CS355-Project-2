@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overdose - View All</title>
+</head>
+    <body>
+        <h1>Overdose Symptoms</h1>
+        <br/>
+        <a href="http://localhost:3000/overdose/add">
+            Add Overdose Symptom</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+
+        <br/>
+        <br/>
+        <br/>
+        <table border = "1">
+            <tr>
+                <th>Medication Name</th>
+                <th>Medication ID</th>
+                <th>Symptom</th>
+            </tr>
+            <% for(var i = 0; i < overdose.length; i++) {%>
+                <tr>
+                    <td><%= overdose[i].medication_name %></td>
+                    <td><%= overdose[i].medication_id %></td>
+                    <td><%= overdose[i].overdose_symptom %></td>
+                </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+        <a href="http://localhost:3000/overdose/add">
+            Add Overdose Symptom</a>
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+
+        <br/>
+        <br/>
+        <br/>
+    </body>
+</html>

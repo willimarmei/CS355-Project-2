@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Precaution - View All</title>
+</head>
+    <body>
+        <h1>Precautions</h1>
+
+        <table border = "1">
+            <tr>
+                <th>Medication ID</th>
+                <th>Precaution Code</th>
+                <th>Precaution</th>
+            </tr>
+            <% for(var i = 0; i < precaution.length; i++) {%>
+                <tr>
+                    <td><%=precaution[i].medicatin_id %></td>
+                    <td><%=precaution[i].precaution_code %></td>
+                    <td><%=precaution[i].precaution %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
