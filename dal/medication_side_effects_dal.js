@@ -22,6 +22,16 @@ exports.insert = function(params, callback) {
     });
 };
 
+exports.delete = function (params, callback) {
+    var query = 'delete from medication_side_effects where medication_id = ?, side_effects_id = ?';
+    var queryData = [params.medication_id, params.side_effects_id];
+
+    connection.query(query, queryData, function (err, result) {
+        callback(err, result);
+
+    });
+};
+
 exports.update = function (params, callback) {
     var query = 'update medication_side_effects set (medication_id, side_effect_id) where (?, ?)';
     var queryData = [params.medication_id, params.side_effect_id];

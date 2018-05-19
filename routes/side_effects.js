@@ -46,14 +46,14 @@ router.get('/edit', function(req, res) {
         if(err) {req.send(err); }
         else {
             res.render('side_effects/side_effects_update',
-                {side_effects_result: result[1]}
+                {side_effects_result: result[0][0]}
             );
         }
 
     });
 });
 
-router.get('update', function (req, res) {
+router.get('/update', function (req, res) {
     side_effects_dal.update(req.query, function(err, result) {
         if(err) {
             res.send(err);
@@ -63,4 +63,17 @@ router.get('update', function (req, res) {
         }
     });
 });
+
+router.get('/delete', function (req, res) {
+    side_effects_dal.delete(req.query, function(err, result) {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/side_effects/all');
+        }
+    });
+
+});
+
 module.exports = router;

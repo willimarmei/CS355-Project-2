@@ -11,10 +11,9 @@ var medication = require('./routes/medication');
 var generic_name = require('./routes/generic_name');
 var interactions = require('./routes/interactions');
 var overdose = require('./routes/overdose');
-var precautions = require('./routes/precautions');
 var side_effects = require('./routes/side_effects');
-var warning = require('./routes/warning');
 var medication_side_effects = require('./routes/medication_side_effects');
+var queries = require('./routes/queries');
 
 
 var app = express();
@@ -37,10 +36,9 @@ app.use('/generic_name', generic_name);
 app.use('/interactions', interactions);
 app.use('/medication', medication);
 app.use('/overdose', overdose);
-app.use('/precautions', precautions);
 app.use('/side_effects', side_effects);
-app.use('/warning', warning);
 app.use('/medication_side_effects', medication_side_effects);
+app.use('/queries', queries);
 
 
 // catch 404 and forward to error handler

@@ -17,11 +17,17 @@
             <tr>
                 <th>Symptom</th>
                 <th>Notes</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <% for(var i = 0; side_effects.length > i; i++) {%>
             <tr>
                 <td><%= side_effects[i].symptom %></td>
                 <td><%= side_effects[i].notes %></td>
+                <td><a href="/side_effects/edit/?side_effects_id=<%= side_effects[i].side_effects_id %>">
+                        Edit</a></td>
+                <td><a href="/side_effects/delete/?side_effects_id=<%= side_effects[i].side_effects_id %>">
+                        Delete</a></td>
             </tr>
             <% } %>
         </table>

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Overdose - Add</title>
-    </head>
-    <body>
-        <h1>Add New Overdose Symptom</h1>
-        <form action = "/overdose/insert" method = "get">
-            Medication Name:
-            <select name = "medication_id">
-            <% for(var i = 0; medication.length > i; i++) {%>
-                    <option value = "<%= medication[i].medication_id %>"> <%= medication[i].medication_name %></option>
-            <% } %>
-            </select>
-            Symptom: <input name="overdose_symptom" type="text" />
-            <br />
-            <input type="submit"/>
-        </form>
-    </body>
+<head>
+    <title>Overdose - Add</title>
+</head>
+<body>
+<h1>Add New Overdose Symptom</h1>
+<form action = "/overdose/insert" method = "get">
+    Medication Name:
+    <select name = "medication_id">
+        <% for(var i = 0; medication.length > i; i++) {%>
+        <option value = "<%= medication[i].medication_id %>"> <%= medication[i].medication_name %></option>
+        <% } %>
+    </select>
+    Symptom: <input name="overdose_symptom" type="text" />
+    <br />
+    <input type="submit"/>
+</form>
+</body>
 </html>

@@ -17,12 +17,21 @@
                 <th>Medication Name</th>
                 <th>Interacts With</th>
                 <th>Notes</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <% for(var i = 0; i < interaction_result.length; i++) {%>
                 <tr>
                     <td><%= interaction_result[i].m1_name %></td>
                     <td><%= interaction_result[i].m2_name %></td>
                     <td><%= interaction_result[i].notes %></td>
+
+                    <td><a href="/interactions/edit/?medication1_id=<%= interaction_result[i].medication1_id %>&medication2_id=<%= interaction_result[i].medication2_id%>">
+                            Edit</a></td>
+                    <td><a href="/interactions/delete/?medication1_id=<%= interaction_result[i].medication1_id %>&medication2_id=<%= interaction_result[i].medication2_id%>">
+                            Delete</a></td>
+
+
                 </tr>
             <% } %>
         </table>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Overdose - Update</title>
+</head>
+    <body>
+        <h1>Edit Overdose</h1>
+        <br>
+
+        Medication Name: <%= overdose_result.medication_name %>
+        <form action="/overdose/update" method="get">
+
+            Symptom: <input
+                id="overdose_symptom"
+                name="overdose_symptom"
+                type="text"
+                value="<%= overdose_result.overdose_symptom %>"/>
+
+
+            <input type="hidden"
+                id="medication_id"
+                name="medication_id"
+                value="<%= overdose_result.medication_id %>"/>
+
+            <br>
+            <br>
+            <input type="submit"/>
+        </form>
+        <br/>
+        <a href="/overdose/all">Return to all</a>
+    </body>
+</html>

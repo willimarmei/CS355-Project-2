@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queries - View All</title>
+</head>
+    <body>
+        <h1>Queries</h1>
+
+        <br/><a href="/staticfile.html">Return To Main Page</a>
+
+        <br/>
+        <br/>
+        <h2>Query 1</h2>
+        <h3>This query will display the medication information for every medication that has
+            more than one side-effect</h3>
+        <h4>
+            select * from medication where medication_id in
+            (select count(medication_id) > 1 from medication_side_effects group by medication_id);</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication ID</th>
+                <th>Medication Name</th>
+                <th>Purpose</th>
+                <th>How To Take</th>
+                <th>Warning</th>
+
+
+            </tr>
+            <% for(var i = 0; i < query1Result.length; i++) {%>
+            <tr>
+                <td><%= query1Result[i].medication_id %></td>
+                <td><%= query1Result[i].medication_name %></td>
+                <td><%= query1Result[i].purpose%></td>
+                <td><%= query1Result[i].how_to_take%></td>
+                <td><%= query1Result[i].warning%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        <h2>Query 2</h2>
+        <h3>Returns all medication information for any medication with a generic_name</h3>
+        <h4>select * from medication_generic_name
+            left join medication on medication_generic_name.medication_id = medication.medication_id
+            order by generic_name asc;</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication ID</th>
+                <th>Medication Name</th>
+                <th>Generic Name</th>
+                <th>Purpose</th>
+                <th>How To Take</th>
+                <th>Warning</th>
+            </tr>
+            <% for(var i = 0; i < query2Result.length; i++) {%>
+            <tr>
+                <td><%= query2Result[i].medication_id %></td>
+                <td><%= query2Result[i].medication_name %></td>
+                <td><%= query2Result[i].generic_name %></td>
+                <td><%= query2Result[i].purpose%></td>
+                <td><%= query2Result[i].how_to_take%></td>
+                <td><%= query2Result[i].warning%></td>
+            </tr>
+            <% } %>
+        </table>
+
+        <br/>
+        <br/>
+        <h2>Query 3</h2>
+        <h3>Returns any medication that does not have a side effect</h3>
+        <h4>
+            select * from medication where medication_id not in
+                (select medication_id from medication_side_effects);</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication ID</th>
+                <th>Medication Name</th>
+                <th>Purpose</th>
+                <th>How To Take</th>
+                <th>Warning</th>
+
+
+            </tr>
+            <% for(var i = 0; i < query3Result.length; i++) {%>
+            <tr>
+                <td><%= query3Result[i].medication_id %></td>
+                <td><%= query3Result[i].medication_name %></td>
+                <td><%= query3Result[i].purpose%></td>
+                <td><%= query3Result[i].how_to_take%></td>
+                <td><%= query3Result[i].warning%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+
+        <h2>Query 4</h2>
+        <h3>Returns any medication that does not have overdose information</h3>
+        <h4>
+            select * from medication where not exists (select medication_id from medication_overdose where
+            medication.medication_id = medication_overdose.medication_id);</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication ID</th>
+                <th>Medication Name</th>
+                <th>Purpose</th>
+                <th>How To Take</th>
+                <th>Warning</th>
+
+
+            </tr>
+            <% for(var i = 0; i < query4Result.length; i++) {%>
+            <tr>
+                <td><%= query4Result[i].medication_id %></td>
+                <td><%= query4Result[i].medication_name %></td>
+                <td><%= query4Result[i].purpose%></td>
+                <td><%= query4Result[i].how_to_take%></td>
+                <td><%= query4Result[i].warning%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+        <br/>
+        <br/>
+        <h2>Query 5</h2>
+        <h3>Displays all medication's that their how_to_take starts with a
+            note about taking it by the mouth</h3>
+        <h4>
+            select medication_name, how_to_take from medication where how_to_take
+                like '%Take this medication by mouth%';</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication Name</th>
+                <th>How To Take</th>
+            </tr>
+            <% for(var i = 0; i < query5Result.length; i++) {%>
+            <tr>
+                <td><%= query5Result[i].medication_name %></td>
+                <td><%= query5Result[i].how_to_take%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+
+        <h2>Query 6</h2>
+        <h3>Displays the medication ID and the count of how many side_effects it has </h3>
+        <h4>
+            select medication_name, count(medication_side_effects.medication_id) as side_effects_count from medication_side_effects
+            left join medication on medication_side_effects.medication_id = medication.medication_id
+            group by medication_name;</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication Name</th>
+                <th>Side Effects Count</th>
+            </tr>
+            <% for(var i = 0; i < query6Result.length; i++) {%>
+            <tr>
+                <td><%= query6Result[i].medication_name %></td>
+                <td><%= query6Result[i].side_effects_count%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+
+
+        <h2>Query 7</h2>
+        <h3>Returns the average number of side effects a medication has </h3>
+        <h4>
+            select avg(a.something) as avg_num_side_effects from
+            (select count(medication_side_effects.medication_id) as something from medication_side_effects
+            group by medication_side_effects.medication_id) a;</h4>
+        <table border = "1">
+            <tr>
+                <th>Average Number of Side Effects</th>
+            </tr>
+            <% for(var i = 0; i < query7Result.length; i++) {%>
+            <tr>
+                <td><%= query7Result[i].avg_num_side_effects %></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+
+        <h2>Query 8</h2>
+        <h3>Returns all the medication information ordered by the medication name then by the medicaiton_id</h3>
+        <h4>
+            select * from medication order by medication_name, medication_id;</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication ID</th>
+                <th>Medication Name</th>
+                <th>Purpose</th>
+                <th>How To Take</th>
+                <th>Warning</th>
+
+
+            </tr>
+            <% for(var i = 0; i < query8Result.length; i++) {%>
+            <tr>
+                <td><%= query8Result[i].medication_id %></td>
+                <td><%= query8Result[i].medication_name %></td>
+                <td><%= query8Result[i].purpose%></td>
+                <td><%= query8Result[i].how_to_take%></td>
+                <td><%= query8Result[i].warning%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+
+        <h2>Query 9</h2>
+        <h3>Returns the union of medication_side_effects and interactions
+            -- Doesn't really work the way it should...</h3>
+        <h4>
+            select medication1_id as medication_id from interactions union
+            select medication_id from medication_side_effects
+            order by medication_id;</h4>
+        <table border = "1">
+            <tr>
+                <th>Medication ID</th>
+            </tr>
+            <% for(var i = 0; i < query9Result.length; i++) {%>
+            <tr>
+                <td><%= query9Result[i].medication_id%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+
+
+        <h2>Query 10</h2>
+        <h3>Returns all the distinct notes from symptoms</h3>
+        <h4>select distinct notes from side_effects;</h4>
+        <table border = "1">
+            <tr>
+                <th>Distinct Side Effects' Notes</th>
+            </tr>
+            <% for(var i = 0; i < query10Result.length; i++) {%>
+            <tr>
+                <td><%= query10Result[i].notes%></td>
+            </tr>
+            <% } %>
+        </table>
+        <br/>
+        <br/>
+        <br/>
+
+<br/><a href="/staticfile.html">Return To Main Page</a>
+
+<br/>
+<br/>
+<br/>
+<br/>
+</body>
+</html>

@@ -5,7 +5,6 @@
 </head>
     <body>
         <h1>Medications</h1>
-
         <a href="http://localhost:3000/medication/add">
             Add Medication Information</a>
         <br/><a href="/staticfile.html">Return To Main Page</a>
@@ -20,7 +19,8 @@
                 <th>Purpose</th>
                 <th>How To Take</th>
                 <th>Warning</th>
-                <th>Action</th>
+                <th>Edit</th>
+                <th>Delete</th>
 
             </tr>
             <% for(var i = 0; i < medication.length; i++) {%>
@@ -35,6 +35,11 @@
                             Edit
                         </a>
                     </td>
+                    <td>
+                        <a href="/medication/delete/?medication_id=<%= medication[i].medication_id %>">
+                            Delete</a>
+                    </td>
+
                 </tr>
             <% } %>
         </table>

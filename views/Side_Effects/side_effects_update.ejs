@@ -8,25 +8,20 @@
         <br>
         <form action = "/side_effects/update" method="get">
 
-            Medication: <input
-                id="side_effects_name"
-                name="side_effects_name"
-                type="text"
-                value="<%=side_effects_result.medication_id%>"/>
             Symptom: <input
-                    id="side_effects_symptom"
-                    name="side_effects_symptom"
+                    id="symptom"
+                    name="symptom"
                     type="text"
-                    value="<%=side_effects_result.symptom%>"/>
+                    value="<%= side_effects_result.symptom%>" />
             Notes: <input
-                    id="side_effects_notes"
-                    name="side_effects_notes"
+                    id="notes"
+                    name="notes"
                     type="text"
-                    value="<%=side_effects_result.notes%>"/>
+                    value="<%= side_effects_result.notes%>" />
             <input type = "hidden"
-                    id="medication_id"
-                    name="medication_id"
-                    value="<%=side_effects_result.medication_id%>"/>
+                    id="side_effects_id"
+                    name="side_effects_id"
+                    value="<%= side_effects_result.side_effects_id%>" />
 
             <br>
             <br>

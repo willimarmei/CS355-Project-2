@@ -22,8 +22,8 @@ exports.getinfo = function(medication_id, callback) {
 };
 
 exports.insert = function(params, callback) {
-    var query = 'INSERT INTO medication (medication_id, medication_name, purpose, how_to_take, warning) VALUES (?, ?, ?, ?, ?)';
-    var queryData = [params.medication_id, params.medication_name, params.purpose, params.how_to_take, params.warning];
+    var query = 'INSERT INTO medication (medication_name, purpose, how_to_take, warning) VALUES (?, ?, ?, ?)';
+    var queryData = [params.medication_name, params.purpose, params.how_to_take, params.warning];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -31,9 +31,19 @@ exports.insert = function(params, callback) {
     });
 };
 
+exports.delete = function (params, callback) {
+    var query = 'call medication_delete(?)';
+    var queryData = [params.medication_id];
+
+    connection.query(query, queryData, function (err, result) {
+        callback(err, result);
+
+    });
+};
+
 exports.update = function (params, callback) {
-    var query = 'update medication set (medication_name, purpose, how_to_take, warning) where (?, ?, ?, ?)';
-    var queryData = [params.medication_name, params.purpose, params.how_to_take, params.warning];
+    var query = 'update medication set medication_name = ?, purpose = ?, how_to_take = ?, warning = ? where medication_id = ?';
+    var queryData = [params.medication_name, params.purpose, params.how_to_take, params.warning, params.medication_id];
     connection.query(query, queryData, function(err, result) {
             callback(err, result);
         })

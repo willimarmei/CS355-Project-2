@@ -43,11 +43,11 @@ router.get('/insert', function(req, res) {
 });
 
 router.get('/edit', function(req, res) {
-    overdose_dal.getinfo(req.query.medication_id, function (err, result) {
+    overdose_dal.getinfo(req.query, function (err, result) {
         if(err) {res.send(err); }
         else   {
             res.render('overdose/overdose_update',
-                {medication: result[1]}
+                {overdose_result: result[0]}
             );
         }
     });
@@ -62,6 +62,18 @@ router.get('/update', function (req, res) {
             res.redirect(302, '/overdose/all');
         }
     });
+});
+
+router.get('/delete', function (req, res) {
+    overdose_dal.delete(req.query, function(err, result) {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/overdose/all');
+        }
+    });
+
 });
 
 module.exports = router;

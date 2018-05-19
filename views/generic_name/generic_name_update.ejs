@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Generic Name - Update</title>
+</head>
+    <body>
+        <h1>Edit Generic Name</h1>
+        <br>
+
+        <form action = "/generic_name/update" method="get">
+            Generic Name: <input
+                id="generic_name"
+                name="generic_name"
+                type="text"
+                value="<%= generic_result.generic_name%>"/>
+            <input type = "hidden"
+                id="medication_id"
+                name="medication_id"
+                value="<%= generic_result.medication_id%>"/>
+
+            <br>
+            <br>
+
+        <input type ="submit"/>
+        </form>
+        <br/>
+        <a href="/generic_name/all">Return to all</a>
+    </body>
+</html>

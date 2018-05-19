@@ -5,7 +5,7 @@ var db = require('./db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM side_effects;';
+    var query = 'SELECT * FROM side_effects';
 
     connection.query(query, function(err, result) {
         callback(err, result);
@@ -31,11 +31,20 @@ exports.insert = function(params, callback) {
     });
 };
 
+exports.delete = function (params, callback) {
+    var query = 'call side_effect_delete(?)';
+    var queryData = [params.side_effects_id];
+
+    connection.query(query, queryData, function (err, result) {
+        callback(err, result);
+
+    });
+};
+
 exports.update = function (params, callback) {
-    var query = 'update side_effects set side_effects_id = ? set notes = ? where side_effects_id = ?';
-    var queryData = [params.symptom, params.notes];
+    var query = 'update side_effects set symptom = ?, notes = ? where side_effects_id = ?';
+    var queryData = [params.symptom, params.notes, params.side_effects_id];
     connection.query(query, queryData, function (err, result) {
         callback(err, result);
     });
-
 };

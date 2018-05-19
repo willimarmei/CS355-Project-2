@@ -12,13 +12,32 @@ exports.getAll = function(callback) {
     });
 };
 
-exports.getinfo = function (medication_id, callback) {
+exports.getinfo = function (params, callback) {
     var query = 'call generic_name_getinfo(?)';
-    var queryData = [medication_id];
+    var queryData = [params.medication_id];
 
     connection.query(query, queryData, function (err, result) {
         callback(err, result);
 
+    });
+};
+
+exports.delete = function (params, callback) {
+    var query = 'delete from medication_generic_name where medication_id = ? and generic_name = ?';
+    var queryData = [params.medication_id, params.generic_name];
+
+    connection.query(query, queryData, function (err, result) {
+        callback(err, result);
+
+    });
+};
+
+exports.update = function(params, callback) {
+    var query = 'update medication_generic_name set generic_name = ? where medication_id = ?';
+    var queryData = [params.generic_name, params.medication_id];
+
+    connection.query(query, queryData, function(err, result) {
+            callback(err, result);
     });
 };
 

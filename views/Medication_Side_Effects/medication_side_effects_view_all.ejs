@@ -18,12 +18,24 @@
                 <th>Medication Name</th>
                 <th>Symptom</th>
                 <th>Notes</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <% for(var i = 0; med_side_effects_result.length > i; i++) {%>
             <tr>
                 <td><%= med_side_effects_result[i].medication_name %></td>
                 <td><%= med_side_effects_result[i].symptom %></td>
                 <td><%= med_side_effects_result[i].notes %></td>
+                <td>
+                    <a href = '/medication_side_effects/edit/?medication_id=<%= med_side_effects_result[i].medication_id%>'>
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a href='/medication_side_effects/delete/?medication_id=<%= med_side_effects_result[i].medication_id %>&side_effect_id=<%= med_side_effects_result[i].side_effects_id%> '>
+                        Delete</a>
+                </td>
+
             </tr>
             <% } %>
         </table>

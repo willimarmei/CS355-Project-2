@@ -30,8 +30,6 @@ router.get('/insert', function(req, res) {
         else {
             res.redirect(302, '/medication/all');
         }
-            // ?medication_id=' + result.insertId
-
     });
 });
 
@@ -41,7 +39,7 @@ router.get('/edit', function(req, res) {
         if(err) {res.send(err); }
         else   {
             res.render('medication/medication_update',
-                {medication: result[0]}
+                {medication: result[0][0]}
             );
         }
     });
@@ -56,6 +54,18 @@ router.get('/update', function (req, res) {
             res.redirect(302, '/medication/all');
         }
     });
+});
+
+router.get('/delete', function (req, res) {
+    medication_dal.delete(req.query, function(err, result) {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/medication/all');
+        }
+    });
+
 });
 
 module.exports = router;

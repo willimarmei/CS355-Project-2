@@ -18,12 +18,18 @@
                 <th>Medication Name</th>
                 <th>Medication ID</th>
                 <th>Symptom</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <% for(var i = 0; i < overdose.length; i++) {%>
                 <tr>
                     <td><%= overdose[i].medication_name %></td>
                     <td><%= overdose[i].medication_id %></td>
                     <td><%= overdose[i].overdose_symptom %></td>
+                    <td><a href="/overdose/edit/?medication_id=<%= overdose[i].medication_id %>&symptom=<%= overdose[i].overdose_symptom%>">
+                            Edit</a></td>
+                    <td><a href="/overdose/delete/?medication_id=<%= overdose[i].medication_id %>&symptom=<%= overdose[i].overdose_symptom%>">
+                            Delete</a></td>
                 </tr>
             <% } %>
         </table>

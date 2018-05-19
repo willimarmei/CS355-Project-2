@@ -44,11 +44,11 @@ router.get('/insert', function(req, res) {
 });
 
 router.get('/edit', function(req, res) {
-    interactions_dal.getinfo(req.query.medication_id, function (err, result) {
+    interactions_dal.getinfo(req.query, function (err, result) {
         if(err) {res.send(err); }
         else   {
             res.render('interactions/interactions_update',
-                {medication: result[1]}
+                {medication: result[0]}
             );
         }
     });
@@ -63,6 +63,18 @@ router.get('/update', function (req, res) {
             res.redirect(302, '/interactions/all');
         }
     });
+});
+
+router.get('/delete', function (req, res) {
+    interactions_dal.delete(req.query, function(err, result) {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/interactions/all');
+        }
+    });
+
 });
 
 module.exports = router;

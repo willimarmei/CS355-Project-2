@@ -17,11 +17,17 @@
             <tr>
                 <th>Medication Name</th>
                 <th>Generic Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <% for(var i = 0; i < generic_name.length; i++) {%>
                 <tr>
                     <td><%= generic_name[i].medication_name %></td>
                     <td><%= generic_name[i].generic_name %></td>
+                    <td><a href="/generic_name/edit/?medication_id=<%= generic_name[i].medication_id %>&generic_name=<%= generic_name[i].generic_name%>">
+                            Edit</a></td>
+                    <td><a href="/generic_name/delete/?medication_id=<%= generic_name[i].medication_id %>&generic_name=<%= generic_name[i].generic_name%>">
+                            Delete</a></td>
                 </tr>
             <% } %>
         </table>

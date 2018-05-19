@@ -16,7 +16,6 @@ router.get('/all', function(req, res, next) {
             res.render('medication_side_effects/medication_side_effects_view_all', {med_side_effects_result:result[0]});
         }
     })
-
 });
 
 router.get('/add', function(req, res) {
@@ -58,4 +57,17 @@ router.get('/update', function (req, res) {
         }
     });
 });
+
+router.get('/delete', function (req, res) {
+    medication_side_effects_dal.delete(req.query, function(err, result) {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/medication_side_effects/all');
+        }
+    });
+
+});
+
 module.exports = router;

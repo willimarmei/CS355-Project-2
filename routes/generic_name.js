@@ -43,11 +43,11 @@ router.get('/insert', function(req, res) {
 });
 
 router.get('/edit', function(req, res) {
-    generic_name_dal.getinfo(req.query.medication_id, function (err, result) {
+    generic_name_dal.getinfo(req.query, function (err, result) {
         if(err) {res.send(err); }
         else   {
             res.render('generic_name/generic_name_update',
-                {generic_name: result[0]}
+                {generic_result: result[0][0]}
             );
         }
     });
@@ -62,6 +62,18 @@ router.get('/update', function (req, res) {
             res.redirect(302, '/generic_name/all');
         }
     });
+});
+
+router.get('/delete', function (req, res) {
+    generic_name_dal.delete(req.query, function(err, result) {
+        if(err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/generic_name/all');
+        }
+    });
+
 });
 
 module.exports = router;
